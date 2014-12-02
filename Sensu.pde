@@ -3,7 +3,7 @@ final  float len2 = 80;
 final  float maxAngle = radians(120);
 final  int   numBone = 19; 
 final  float thickness = 1;
-final  float boneWidth = 5;
+final  float boneWidth = 3;
 
 PImage img;
 
@@ -13,6 +13,7 @@ void setup() {
   
   img = loadImage("img.png");
   counter = 0;
+  noStroke();
 }
 
 void draw() {
@@ -20,7 +21,6 @@ void draw() {
   if(img.get(0,0) == 0) return;
   
   noFill();
-  stroke(255);
   
   translate(0, 0, -100);
   translate( 0.5 * width, 0, 0);
@@ -65,6 +65,8 @@ void draw() {
     endShape();  
     popMatrix();
     
+    lights();
+    fill(100, 80, 0);
     // Bone
     pushMatrix();
     translate(0, len, z);
@@ -72,6 +74,8 @@ void draw() {
     translate(0, -0.5 * len2, 0);
     box(boneWidth, len2, thickness);
     popMatrix();
+    fill(255);
+    noLights();
 
   }
   popMatrix(); 
